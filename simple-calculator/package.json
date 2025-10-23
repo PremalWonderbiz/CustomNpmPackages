@@ -1,0 +1,21 @@
+{
+  "name": "@mycompany/simple-calculator",
+  "version": "1.0.0",
+  "description": "This is a simple calculator package contains add sub mul and div",
+  
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  }
+}

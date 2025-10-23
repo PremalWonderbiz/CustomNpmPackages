@@ -1,0 +1,74 @@
+# Compiled output
+/dist
+/build
+/out
+/es
+/lib
+/tmp
+/temp
+/out-tsc
+
+# Node modules
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage reports
+/coverage
+.nyc_output
+
+# Editor/IDE specific files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# TypeScript specific
+*.js.map
+*.d.ts
+!src/**/*.d.ts # Keep declaration files in src if needed for library publishing
+
+# Test files
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# Misc
+.sass-cache
+connect.lock
+typings
