@@ -2,7 +2,6 @@
 
 ![npm](https://img.shields.io/badge/npm-packages-blue)
 ![TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178c6)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 A centralized monorepo that hosts all of our **custom-built npm packages**.  
 Each package is independent, versioned, and TypeScript-ready — designed for real-world Node.js and frontend applications.
@@ -62,7 +61,6 @@ npm install
   },
   "keywords": ["logger", "typescript", "utility"],
   "author": "Premal Kadam",
-  "license": "MIT",
   "type": "commonjs"
 }
 ```
@@ -251,7 +249,3 @@ Passionate about building modular, reusable, and TypeScript-driven npm libraries
 🔗 [GitHub Profile](https://github.com/PremalWonderbiz)
 
 ---
-
-## 📜 License
-
-MIT License © 2025 [Premal Kadam](https://github.com/PremalWonderbiz)
