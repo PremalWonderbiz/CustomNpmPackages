@@ -39,6 +39,19 @@ var Logger = class {
   }
 };
 
+// src/transports/file.ts
+import fs from "fs";
+var FileTransport = class {
+  constructor(filePath) {
+    this.filePath = filePath;
+  }
+  log(level, message, meta) {
+    const line = `[${level.toUpperCase()}] ${message}${meta ? " " + JSON.stringify(meta) : ""}
+`;
+    fs.appendFileSync(this.filePath, line, { encoding: "utf8" });
+  }
+};
+
 // src/formatters.ts
 var COLORS = {
   debug: "\x1B[36m",
@@ -71,7 +84,18 @@ var ConsoleTransport = class {
     if (meta) console.log(meta);
   }
 };
+
+// src/index.ts
+var logger = new Logger({
+  transports: [new FileTransport("app.log")]
+});
+logger.debug("Debug message");
+logger.info("Info message");
+logger.warn("Warning message");
+logger.error("Error message");
+console.log("\u2705 FileTransport test complete. Check app.log for output.");
 export {
   ConsoleTransport,
+  FileTransport,
   Logger
 };

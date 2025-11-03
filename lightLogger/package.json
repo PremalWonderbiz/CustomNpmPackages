@@ -1,6 +1,6 @@
 {
   "name": "@mycompany/lightlogger",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Lightweight, colorized, pluggable logger for Node.js and browser.",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",

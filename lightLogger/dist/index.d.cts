@@ -27,4 +27,10 @@ declare class Logger {
     setLevel(level: LogLevel): void;
 }
 
-export { ConsoleTransport, type LogLevel, Logger, type LoggerOptions };
+declare class FileTransport implements Transport {
+    private filePath;
+    constructor(filePath: string);
+    log(level: LogLevel, message: string, meta?: any): void;
+}
+
+export { ConsoleTransport, FileTransport, type LogLevel, Logger, type LoggerOptions };
