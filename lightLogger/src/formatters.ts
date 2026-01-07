@@ -6,11 +6,15 @@ export const COLORS: Record<string, string> = {
   reset: "\x1b[0m",
 };
 
-export function colorize(level: string, text: string, enable:boolean = true): string {
-    if (!enable || !COLORS[level]) return text;
-    return `${COLORS[level]}${text}${COLORS.reset}`;
+export function colorize(
+  level: string,
+  text: string,
+  enable: boolean = true
+): string {
+  if (!enable || !COLORS[level]) return text;
+  return `${COLORS[level]}${text}${COLORS.reset}`;
 }
 
-export function timestamp() : string {
-    return new Date().toISOString();
+export function timestamp(): string {
+  return new Date().toISOString();
 }

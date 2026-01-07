@@ -1,9 +1,8 @@
-import { LogLevel, LEVELS } from "./levels";
+import { LEVELS, LogLevel } from "./levels";
 import { Transport } from "./transports/console";
 
 export interface LoggerOptions {
   level?: LogLevel;
-  colorize?: boolean;
   transports?: Transport[];
 }
 
@@ -12,7 +11,7 @@ export class Logger {
   private transports: Transport[];
 
   constructor(options: LoggerOptions = {}) {
-    this.level = options.level || 'debug';
+    this.level = options.level || "debug";
     this.transports = options.transports || [];
   }
 
@@ -27,10 +26,28 @@ export class Logger {
     }
   }
 
-  debug(msg: string, meta?: any) { this.log('debug', msg, meta); }
-  info(msg: string, meta?: any) { this.log('info', msg, meta); }
-  warn(msg: string, meta?: any) { this.log('warn', msg, meta); }
-  error(msg: string, meta?: any) { this.log('error', msg, meta); }
+  debug(msg: string, meta?: any) {
+    this.log("debug", msg, meta);
+  }
+  info(msg: string, meta?: any) {
+    this.log("info", msg, meta);
+  }
+  warn(msg: string, meta?: any) {
+    this.log("warn", msg, meta);
+  }
+  error(msg: string, meta?: any) {
+    let metaObj: any = {};
+    if (meta) {
+      metaObj = {
+        name: meta?.name,
+        message: meta?.message,
+        stack: meta?.stack,
+      };
+    }
+    this.log("error", msg, metaObj);
+  }
 
-  setLevel(level: LogLevel) { this.level = level; }
+  setLevel(level: LogLevel) {
+    this.level = level;
+  }
 }

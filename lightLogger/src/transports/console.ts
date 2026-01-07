@@ -1,5 +1,5 @@
-import { LogLevel } from "../levels";
 import { colorize, timestamp } from "../formatters";
+import { LogLevel } from "../levels";
 
 export interface Transport {
   log(level: LogLevel, message: string, meta?: any): void;

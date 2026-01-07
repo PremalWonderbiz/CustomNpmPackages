@@ -32,23 +32,18 @@ var Logger = class {
     this.log("warn", msg, meta);
   }
   error(msg, meta) {
-    this.log("error", msg, meta);
+    let metaObj = {};
+    if (meta) {
+      metaObj = {
+        name: meta?.name,
+        message: meta?.message,
+        stack: meta?.stack
+      };
+    }
+    this.log("error", msg, metaObj);
   }
   setLevel(level) {
     this.level = level;
-  }
-};
-
-// src/transports/file.ts
-import fs from "fs";
-var FileTransport = class {
-  constructor(filePath) {
-    this.filePath = filePath;
-  }
-  log(level, message, meta) {
-    const line = `[${level.toUpperCase()}] ${message}${meta ? " " + JSON.stringify(meta) : ""}
-`;
-    fs.appendFileSync(this.filePath, line, { encoding: "utf8" });
   }
 };
 
@@ -85,15 +80,21 @@ var ConsoleTransport = class {
   }
 };
 
-// src/index.ts
-var logger = new Logger({
-  transports: [new FileTransport("app.log")]
-});
-logger.debug("Debug message");
-logger.info("Info message");
-logger.warn("Warning message");
-logger.error("Error message");
-console.log("\u2705 FileTransport test complete. Check app.log for output.");
+// src/transports/file.ts
+import * as fs from "fs";
+var FileTransport = class {
+  constructor(filePath, isColorized = true) {
+    this.filePath = filePath;
+    this.isColorized = isColorized;
+  }
+  log(level, message, meta) {
+    const time = timestamp();
+    const msg = `[${time}] [${level.toUpperCase()}] ${message}`;
+    const line = `${msg} ${meta ? " " + JSON.stringify(meta) : ""}
+`;
+    fs.appendFileSync(this.filePath, line, { encoding: "utf8" });
+  }
+};
 export {
   ConsoleTransport,
   FileTransport,

@@ -1,4 +1,4 @@
-type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'silent';
+type LogLevel = "debug" | "info" | "warn" | "error" | "silent";
 
 interface Transport {
     log(level: LogLevel, message: string, meta?: any): void;
@@ -11,7 +11,6 @@ declare class ConsoleTransport implements Transport {
 
 interface LoggerOptions {
     level?: LogLevel;
-    colorize?: boolean;
     transports?: Transport[];
 }
 declare class Logger {
@@ -29,8 +28,9 @@ declare class Logger {
 
 declare class FileTransport implements Transport {
     private filePath;
-    constructor(filePath: string);
+    private isColorized;
+    constructor(filePath: string, isColorized?: boolean);
     log(level: LogLevel, message: string, meta?: any): void;
 }
 
-export { ConsoleTransport, FileTransport, type LogLevel, Logger, type LoggerOptions };
+export { ConsoleTransport, FileTransport, type LogLevel, Logger, type LoggerOptions, type Transport };
